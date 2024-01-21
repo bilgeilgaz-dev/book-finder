@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app class="book-finder-container">
     <v-container class="app-container pa-0">
       <v-row class="fill-height pb-0 ma-0">
         <v-col cols="1" class="pa-0">
@@ -8,9 +8,8 @@
         <v-col cols="11" class="pa-0">
           <Component
             :is="currentState"
-            :bookSearchState="bookSearchState"
             :booksList="booksList"
-            @startSearch="startSearch()"
+            @startSearching="startSearching"
           />
         </v-col>
       </v-row>
@@ -53,17 +52,15 @@ export default {
 
   computed: {
     currentState() {
-      console.log('pages', states);
-      console.log('currentState bookSearchState', this.bookSearchState);
       return states[this.bookSearchState];
     }
   },
 
   methods: {
-    async startSearch() {
-      console.log('startSearch');
+    async startSearching(params) {
+      console.log('startSearching', params);
       this.bookSearchState = 'LoadingState';
-      this.booksList = await search.search(this.searchKey, this.searchType);
+      this.booksList = await search.search(params.searchKey, params.searchType);
       this.bookSearchState = 'ResultsState';
     }
   }
@@ -75,7 +72,7 @@ export default {
   height: 100vh;
   max-width: none;
 }
-.v-application {
+::v-deep .v-application {
   font-family: 'ubuntu', sans-serif;
 }
 </style>

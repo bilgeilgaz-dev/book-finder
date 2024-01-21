@@ -1,5 +1,5 @@
 <template>
-  <v-card elevation="6" height="90" width="800">
+  <v-card elevation="6" height="90" width="850">
     <v-row>
       <v-col cols="2" class="pb-0">
         <v-skeleton-loader
