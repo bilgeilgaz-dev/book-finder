@@ -11,13 +11,12 @@
     <v-col cols="2" class="text-center" v-if="!isLandingPage">
       <v-img
         src="@/assets/Penguin_Random_House.png"
-        class=""
         width="100"
       />
     </v-col>
     <v-col :cols="isLandingPage ? 12 : 8">
       <v-row class="toolbar-container">
-        <v-col :cols="isLandingPage ? 12 : 9" class="">
+        <v-col :cols="isLandingPage ? 12 : 9">
           <v-toolbar 
             dense
             class="search-bar-toolbar"
@@ -29,8 +28,14 @@
               v-model="searchKey"
               placeholder="Search for a book title, author, or ISBN"
               class="mr-2"
+              @keydown.enter.prevent="search"
             />
-            <v-btn icon @click="search" :class="[isLandingPage ? 'landing-search-btn' : 'mr-2']">
+            <v-btn 
+              icon 
+              @click="search"
+              :class="[isLandingPage ? 'landing-search-btn' : 'mr-2']"
+              type="submit"
+            >
               <v-icon>mdi-magnify</v-icon>
             </v-btn>
           </v-toolbar>
@@ -39,13 +44,26 @@
           <v-row class="align-end select-search-text">
             <v-col
               v-if="isLandingPage"
-              cols="3"
-              offset="3"
+              cols="4"
+              class="text-align-end"
             >
-              <span >Search for a book by:</span>
+              <span>{{ $t('search.placeholder') }}</span>
             </v-col>
-            <v-col :cols="isLandingPage ? 3 : 12">
-              <v-select hide-details dense :items="SEARCH_TYPES" variant="underlined" v-model="searchType"></v-select>
+            <v-col :cols="isLandingPage ? 4 : 12">
+              <v-select 
+                hide-details 
+                dense 
+                :items="SEARCH_TYPES"
+                v-model="searchType"
+                :menu-props="{ bottom: true, offsetY: true }"
+              >
+              <template v-slot:selection="{ item }">
+                <span v-html="getSearchTypeText(item)"></span>
+              </template>
+              <template v-slot:item="{ item }">
+                <span v-html="getSearchTypeText(item)"></span>
+              </template>
+              </v-select>
             </v-col>
           </v-row>
         </v-col>
@@ -89,8 +107,16 @@ export default {
 
   methods: {
     search() {
+      if(this.searchType === 'ISBN') {
+        this.searchKey = this.searchKey.replace(/-/g, '');
+      }
+      console.log('search', this.searchKey, this.searchType);
       this.$emit('startSearching', {searchKey: this.searchKey, searchType: this.searchType});
     },
+
+    getSearchTypeText(item) {
+      return (this.isLandingPage && item === 'SMART') ? this.$t(`search.types.LandingSmart`) : this.$t(`search.types.${item}`);
+    }
   },
 
   created() {
@@ -99,6 +125,9 @@ export default {
 }
 </script>
 <style scoped lang="scss">
+.text-align-end {
+  text-align: end;
+}
 
 .search-bar-toolbar {
   border-radius: 5px;
@@ -110,6 +139,8 @@ export default {
 
   .select-search-text {
     color: #757575;
+    width: 100%;
+    justify-content: center;
   }
 
   ::v-deep .v-toolbar__content {

@@ -8,7 +8,9 @@
       v-if="booksList.exactMatch.length > 0"
       class="exact-match match-container"
     >
-      <h5 class="mb-5 book-list-section">Top results ({{ booksList.exactMatch.length }})</h5>
+      <h5 class="mb-5 book-list-section">
+        {{ $t('states.results.topResults', {results: booksList.exactMatch.length}) }}
+      </h5>
       <div class="book-card-container">
         <BookCard
           v-for="(book, index) of booksList.exactMatch" 
@@ -22,7 +24,7 @@
       class="all-matches match-container"
       v-if="booksList.allMatches.length > 0"
     >
-      <h5 class="mb-5 book-list-section">Related</h5>
+      <h5 class="mb-5 book-list-section">{{ $t('states.results.related') }}</h5>
       <div class="book-card-container">
         <BookCard 
           v-for="(book, index) of booksList.allMatches" 
@@ -33,10 +35,10 @@
       </div>
     </div>
     <div
-      v-if="!booksList.exactMatch.length && !booksList.allMatches.length"
+      v-if="!booksList || (!booksList.exactMatch.length && !booksList.allMatches.length)"
       class="no-results book-card-container"
     >
-      <h1 class="no-results">No results found</h1>
+      <h1 class="no-results">{{ $t('states.results.noResults') }}</h1>
     </div>
   </div>
 </template>
@@ -51,7 +53,11 @@ export default {
   props: {
     booksList: {
       type: Object,
-      required: true
+      required: false,
+      default: () => ({
+        exactMatch: [],
+        allMatches: []
+      })
     }
   },
 

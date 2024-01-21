@@ -6,7 +6,7 @@
     />
     <div class="loader-card-container">
       <LoaderCard 
-        v-for="i of 4" 
+        v-for="i of 5" 
         :key="i"
         class="mb-5"
       />

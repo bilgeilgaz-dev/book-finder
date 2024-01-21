@@ -3,8 +3,6 @@ import axios from 'axios';
 
 export default {
   async search (searchKey, searchType = 'SMART') {
-    console.log('searchType', searchType);
-    console.log('searchKey', searchKey);
     try {
       const ISBN = searchType === 'ISBN' ? searchKey : null;
       const books = await this.getSearchList(ISBN);

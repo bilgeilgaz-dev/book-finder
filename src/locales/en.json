@@ -1,7 +1,23 @@
 {
   "states": {
     "landing": {
-      "title": "PENGUIN RANDOM HOUSE"
+      "title": "BOOKS",
+      "subTitle": "PENGUIN RANDOM HOUSE"
+    },
+    "results": {
+      "topResults": "Top results ({results})",
+      "related": "Related", 
+      "noResults": "No results found"
+    }
+  }, 
+  "search": {
+    "placeholder": "Search for a book by:",
+    "types": {
+      "LandingSmart" : "our <i>Smart Search</i> algorithm",
+      "SMART": "Smart search",
+      "TITLE": "Title",
+      "AUTHOR": "Author",
+      "ISBN": "ISBN"
     }
   }
 }
