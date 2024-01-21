@@ -9,7 +9,7 @@
             class="pa-0"
           />
         </v-col>
-        <v-col cols="10" class="pl-0">
+        <v-col cols="10" class="pl-1">
           <v-row class="justify-space-between">
             <v-col cols="7" class="pt-5 pb-2">
                 <v-row>
@@ -67,6 +67,26 @@
   .grey-text {
     color: #757575;
     font-size: 14px;
+  }
+
+  @media screen and (min-width: 610px) and (max-width: 950px) {
+    .v-card {
+      width: 550px !important;
+    }
+  }
+
+  @media screen and (min-width: 450px) and (max-width: 610px) {
+    .v-card {
+      width: 400px !important;
+      height: 130px !important;
+    }
+  }
+
+  @media screen and (max-width: 450px) {
+    .v-card {
+      width: 300px !important;
+      height: 130px !important;
+    }
   }
 </style>
   

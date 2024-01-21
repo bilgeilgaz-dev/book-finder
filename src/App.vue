@@ -63,6 +63,10 @@ export default {
       this.booksList = await search.search(params.searchKey, params.searchType);
       this.bookSearchState = 'ResultsState';
     }
+  },
+
+  created() {
+    this.$store.commit('setSearchKey', '');
   }
 };
 </script>

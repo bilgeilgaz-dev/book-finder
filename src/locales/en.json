@@ -11,7 +11,8 @@
     }
   }, 
   "search": {
-    "placeholder": "Search for a book by:",
+    "searchBy": "Search for a book by:",
+    "placeholder": "Search for a book by title, author, or ISBN",
     "types": {
       "LandingSmart" : "our <i>Smart Search</i> algorithm",
       "SMART": "Smart search",

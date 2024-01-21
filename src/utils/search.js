@@ -49,9 +49,9 @@ export default {
 
   searchByAuthor (matches, data, searchKey) {
     data.forEach((item) => {
-      if(item.author === searchKey) {
+      if(item.author.toLowerCase() === searchKey.toLowerCase()) {
         matches.exactMatch.push(item);
-      } else if(item.author.includes(searchKey)) {
+      } else if(item.author.toLowerCase().includes(searchKey.toLowerCase())) {
         matches.allMatches.push(item);
       }
     });
@@ -61,9 +61,9 @@ export default {
 
   searchByTitle (matches, data, searchKey) {
     data.forEach((item) => {
-      if(item.title === searchKey) {
+      if(item.title.toLowerCase() === searchKey.toLowerCase()) {
         matches.exactMatch.push(item);
-      } else if(item.title.includes(searchKey)) {
+      } else if(item.title.toLowerCase().includes(searchKey.toLowerCase())) {
         matches.allMatches.push(item);
       }
     });
@@ -73,9 +73,9 @@ export default {
 
   searchBySmart (matches, data, searchKey) {
     data.forEach((item) => {
-      if(item.title === searchKey || item.author === searchKey || item.isbn.toString() === searchKey) {
+      if(item.title.toLowerCase() === searchKey.toLowerCase() || item.author.toLowerCase() === searchKey.toLowerCase() || item.isbn.toString() === searchKey) {
         matches.exactMatch.push(item);
-      } else if(item.title.includes(searchKey) || item.author.includes(searchKey) || item.isbn.toString().includes(searchKey)) {
+      } else if(item.title.toLowerCase().includes(searchKey.toLowerCase()) || item.author.toLowerCase().includes(searchKey.toLowerCase()) || item.isbn.toString().includes(searchKey)) {
         matches.allMatches.push(item);
       }
     });
