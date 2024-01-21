@@ -49,3 +49,24 @@ export default {
   data: () => ({}),
 };
 </script>
+<style scoped lang="scss">
+@media screen and (min-width: 610px) and (max-width: 950px) {
+  .v-card {
+    width: 550px !important;
+  }
+}
+
+@media screen and (min-width: 450px) and (max-width: 610px) {
+  .v-card {
+    width: 400px !important;
+    height: 130px !important;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .v-card {
+    width: 300px !important;
+    height: 130px !important;
+  }
+}
+</style>

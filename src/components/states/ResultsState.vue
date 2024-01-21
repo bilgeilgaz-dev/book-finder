@@ -96,4 +96,22 @@ export default {
     margin-top: 10%;
   }
 }
+
+@media screen and (min-width: 610px) and (max-width: 950px) {
+    .book-list-section {
+      width: 550px !important;
+    }
+  }
+
+  @media screen and (min-width: 450px) and (max-width: 610px) {
+    .book-list-section {
+      width: 400px !important;
+    }
+  }
+
+  @media screen and (max-width: 450px) {
+    .book-list-section {
+      width: 300px !important;
+    }
+  }
 </style>
