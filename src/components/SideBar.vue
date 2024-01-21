@@ -1,42 +1,45 @@
 <template>
-  <v-container>
-    <v-app-bar
-      app
-      color="primary"
-      dark
+  <v-card
+    class="side-stepper fill-height justify-center"
+  >
+    <v-navigation-drawer
+      permanent
+      color="#071F3F"
     >
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
+      <v-list>
+        <v-list-item class="justify-center">
+          <img 
+            class="my-2"
+            width="50px"
+            src="../assets/Penguin_logo.png"
+          />
+        </v-list-item>
+        <v-list-item :class="['justify-center', {'selected': isSearchSelected}]" dense>
+          <v-list-item-icon class="mx-0">
+            <v-icon color="white">mdi-magnify</v-icon>
+          </v-list-item-icon>
+        </v-list-item>
+        <v-list-item class="justify-center" dense>
+          <v-list-item-icon class="mx-0">
+            <v-icon color="grey">mdi-help-circle</v-icon>
+          </v-list-item-icon>
+        </v-list-item>
+      </v-list>
 
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
-      </div>
-
-      <v-spacer></v-spacer>
-
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
-    </v-app-bar>
-  </v-container>
+      <template v-slot:append>
+        <v-list-item class="justify-center">
+          <v-list-item-icon class="mx-0">
+            <v-icon color="grey">mdi-logout</v-icon>
+          </v-list-item-icon>
+        </v-list-item>
+        <v-list-item class="justify-center mb-2">
+          <v-list-item-avatar class="mx-0">
+            <img src="https://randomuser.me/api/portraits/women/81.jpg">
+          </v-list-item-avatar>
+        </v-list-item>
+      </template>
+    </v-navigation-drawer>
+  </v-card>
 </template>
 
 <script>
@@ -44,6 +47,15 @@
     name: 'SideBar',
 
     data: () => ({
+      isSearchSelected: true,
     }),
   }
 </script>
+<style scoped lang="scss">
+.side-stepper {
+  background-color: #071F3F;
+}
+  .selected {
+    border-left: #FF6602 2px solid;
+  }
+</style>

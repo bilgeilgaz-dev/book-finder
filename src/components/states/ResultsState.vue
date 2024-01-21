@@ -1,11 +1,12 @@
 <template>
-  <v-container>
-  </v-container>
+  <div>
+    Results page
+  </div>
 </template>
 
 <script>
   export default {
-    name: 'ResultsPage',
+    name: 'ResultsState',
 
     data: () => ({
     }),
