@@ -1,7 +1,7 @@
 <template>
   <div class="landing-page d-flex flex-column align-center">
     <h1 class="landing-page-title">BOOKS</h1>
-    <p>PENGUIN RANDOM HOUSE</p>
+    <p>{{ $t('states.landing.title') }}</p>
     <SearchBar
       class="mt-5"
       :state="'Landing'"
