@@ -27,7 +27,7 @@
               class="search-bar-toolbar"
             >
               <v-text-field
-                hide-details 
+                hide-details
                 single-line 
                 :clearable="!isLandingPage"
                 v-model="searchKey"
@@ -38,8 +38,9 @@
               <v-btn 
                 icon 
                 @click="search"
-                :class="[isLandingPage ? 'landing-search-btn' : 'mr-2']"
+                :class="[isLandingPage ? 'landing-search-btn' : 'mr-2', {'search-btn-disabled': !searchKey}]"
                 type="submit"
+                :disabled="!searchKey"
               >
                 <v-icon>mdi-magnify</v-icon>
               </v-btn>
@@ -144,6 +145,16 @@ export default {
 }
 </script>
 <style scoped lang="scss">
+.search-btn-disabled {
+  cursor: not-allowed !important;
+  opacity: 0.8;
+}
+
+.theme--light.v-btn.v-btn--disabled .v-icon {
+  color: white !important;
+  opacity: 0.8;
+}
+
 .text-align {
   text-align: end;
 }
@@ -163,7 +174,7 @@ export default {
   }
 
   ::v-deep .v-toolbar__content {
-    padding-right: 0;
+    padding: 0 12px;
   }
 
   .landing-search-btn {
