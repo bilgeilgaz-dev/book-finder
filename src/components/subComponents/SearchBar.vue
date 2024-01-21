@@ -93,12 +93,13 @@
 </template>
 
 <script>
+import { SEARCH_TYPES_ENUM } from '../../utils/constants';
 
 const SEARCH_TYPES = [
-  'SMART',
-  'TITLE',
-  'AUTHOR',
-  'ISBN',
+  SEARCH_TYPES_ENUM.SMART,
+  SEARCH_TYPES_ENUM.TITLE,
+  SEARCH_TYPES_ENUM.AUTHOR,
+  SEARCH_TYPES_ENUM.ISBN,
 ];
 
 export default {
@@ -114,7 +115,7 @@ export default {
 
   data: () => ({
     searchKey: '',
-    searchType: 'SMART',
+    searchType: SEARCH_TYPES_ENUM.SMART,
   }),
 
   computed: {
@@ -125,7 +126,7 @@ export default {
 
   methods: {
     search() {
-      if (this.searchType === 'ISBN') {
+      if (this.searchType === SEARCH_TYPES_ENUM.ISBN) {
         this.searchKey = this.searchKey.replace(/-/g, '');
       }
       this.$store.commit('setSearchKey', this.searchKey);

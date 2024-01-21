@@ -26,7 +26,7 @@
             </v-col>
           </v-row>
           <v-row class="pl-3 grey-text">
-            <span> {{ `ISBN ${book.isbn}` }}</span>
+            <span> {{ $t('book.isbn', {ISBN: book.isbn}) }}</span>
             <v-icon>mdi-circle-small</v-icon>
             <span> {{ book.division.description }}</span>
             <v-icon>mdi-circle-small</v-icon>

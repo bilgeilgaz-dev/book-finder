@@ -20,6 +20,7 @@
 <script>
 import SideBar from './components/SideBar.vue';
 import search from './utils/search';
+import { SEARCH_TYPES_ENUM } from './utils/constants';
 
 const req = require.context('./components/states', true, /\.(vue)$/i);
 const states = {};
@@ -58,7 +59,7 @@ export default {
 
   created() {
     this.$store.commit('setSearchKey', '');
-    this.$store.commit('setSearchType', 'SMART');
+    this.$store.commit('setSearchType', SEARCH_TYPES_ENUM.SMART);
   },
 };
 </script>

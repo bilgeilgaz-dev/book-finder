@@ -20,11 +20,6 @@ export default {
     SearchBar,
   },
 
-  data: () => ({
-    searchKey: '',
-    searchType: 'SMART',
-  }),
-
   methods: {
     startSearching(params) {
       this.$emit('startSearching', params);

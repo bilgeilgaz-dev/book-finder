@@ -1,11 +1,12 @@
 import axios from 'axios';
+import { SEARCH_TYPES_ENUM } from './constants';
 
 const API_KEY = 'gd82nyfm9mfjzgykpx6zyv8x';
 
 export default {
-  async search(searchKey, searchType = 'SMART') {
+  async search(searchKey, searchType = SEARCH_TYPES_ENUM.SMART) {
     try {
-      const ISBN = searchType === 'ISBN' ? searchKey : null;
+      const ISBN = searchType === SEARCH_TYPES_ENUM.ISBN ? searchKey : null;
       const books = await this.getSearchList(ISBN);
       return this.searchBy(books, searchKey, searchType);
     } catch (error) {
@@ -36,13 +37,13 @@ export default {
       exactMatch: [],
     };
     switch (searchType) {
-      case 'SMART':
+      case SEARCH_TYPES_ENUM.SMART:
         matches = this.searchBySmart(matches, data, searchKey);
         break;
-      case 'AUTHOR':
+      case SEARCH_TYPES_ENUM.AUTHOR:
         matches = this.searchByAuthor(matches, data, searchKey);
         break;
-      case 'TITLE':
+      case SEARCH_TYPES_ENUM.TITLE:
         matches = this.searchByTitle(matches, data, searchKey);
         break;
       default:

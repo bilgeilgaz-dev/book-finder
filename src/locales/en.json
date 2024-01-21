@@ -20,5 +20,8 @@
       "AUTHOR": "Author",
       "ISBN": "ISBN"
     }
+  },
+  "book": {
+    "isbn": "ISBN {ISBN}"
   }
 }
