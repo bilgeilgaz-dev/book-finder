@@ -10,17 +10,12 @@ export default {
       return this.searchBy(books, searchKey, searchType);
     } catch (error) {
       console.error(error);
-      return error;
+      return {
+        allMatches: [],
+        exactMatch: [],
+      };
     }
   },
-
-  /* async getSearchList(ISBN = null) {
-    const smartSearch = `https://api.penguinrandomhouse.com/resources/v2/title/domains/PRH.US/titles?api_key=${API_KEY}`;
-    const searchByISBN = `https://api.penguinrandomhouse.com/resources/v2/title/domains/PRH.US/titles/${ISBN}?api_key=${API_KEY}`;
-    const apiURL = ISBN ? searchByISBN : smartSearch;
-    return await axios.get(apiURL)
-      .then((response) => response.data.data.titles);
-  }, */
 
   async getSearchList(ISBN = null) {
     const smartSearch = `https://api.penguinrandomhouse.com/resources/v2/title/domains/PRH.US/titles?api_key=${API_KEY}`;

@@ -58,6 +58,7 @@ export default {
 
   created() {
     this.$store.commit('setSearchKey', '');
+    this.$store.commit('setSearchType', 'SMART');
   },
 };
 </script>

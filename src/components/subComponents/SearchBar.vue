@@ -129,6 +129,7 @@ export default {
         this.searchKey = this.searchKey.replace(/-/g, '');
       }
       this.$store.commit('setSearchKey', this.searchKey);
+      this.$store.commit('setSearchType', this.searchType);
       this.$emit('startSearching', { searchKey: this.searchKey, searchType: this.searchType });
     },
 
@@ -142,6 +143,10 @@ export default {
     const searchKeyFromStore = this.$store.getters.getSearchKey;
     if (searchKeyFromStore) {
       this.searchKey = searchKeyFromStore;
+    }
+    const searchTypeFromStore = this.$store.getters.getSearchType;
+    if (searchTypeFromStore) {
+      this.searchType = searchTypeFromStore;
     }
   },
 };
