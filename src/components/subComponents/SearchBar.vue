@@ -158,7 +158,7 @@ export default {
   opacity: 0.8;
 }
 
-.theme--light.v-btn.v-btn--disabled .v-icon {
+.landing-search-bar .theme--light.v-btn.v-btn--disabled .v-icon {
   color: white !important;
   opacity: 0.8;
 }
