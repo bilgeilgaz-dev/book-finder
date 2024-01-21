@@ -1,37 +1,37 @@
 <template>
   <div id="loading-state">
-    <SearchBar 
+    <SearchBar
       class="my-5"
       @startSearching="startSearching"
     />
     <div class="loader-card-container">
-      <LoaderCard 
-        v-for="i of 5" 
+      <LoaderCard
+        v-for="i of 5"
         :key="i"
         class="mb-5"
       />
     </div>
   </div>
 </template>
-  
+
 <script>
-  import LoaderCard from '../subComponents/LoaderCard.vue';
-  import SearchBar from "../subComponents/SearchBar.vue";
+import LoaderCard from '../subComponents/LoaderCard.vue';
+import SearchBar from '../subComponents/SearchBar.vue';
 
-  export default {
-    name: 'LoadingState',
+export default {
+  name: 'LoadingState',
 
-    components: {
-      LoaderCard,
-      SearchBar
+  components: {
+    LoaderCard,
+    SearchBar,
+  },
+
+  methods: {
+    startSearching(params) {
+      this.$emit('startSearching', params);
     },
-
-    methods: {
-      startSearching(params) {
-        this.$emit('startSearching', params);
-      }
-    }
-  }
+  },
+};
 </script>
 <style scoped lang="scss">
 #loading-state {
@@ -45,4 +45,3 @@
   }
 }
 </style>
-  

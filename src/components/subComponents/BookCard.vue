@@ -36,33 +36,30 @@
       </v-row>
     </v-card>
   </template>
-  
-  <script>
-  export default {
-    name: "BookCard",
-  
-    props: {
-      book: {
-        type: Object,
-        required: true
-      }
+
+<script>
+export default {
+  name: 'BookCard',
+
+  props: {
+    book: {
+      type: Object,
+      required: true,
+    },
+  },
+
+  computed: {
+    bookPrice() {
+      return this.book.price?.find((price) => price.currencyCode === 'USD').amount;
     },
 
-    computed: {
-      bookPrice() {
-        return this.book.price?.find(price => price.currencyCode === 'USD').amount;
-      },
-
-      bookCoverFoto() {
-        return this.book._links?.find(link => link.rel === 'icon')?.href;
-      }
+    bookCoverFoto() {
+      // eslint-disable-next-line
+      return this.book._links?.find((link) => link.rel === 'icon')?.href;
     },
-
-    created() {
-      console.log('BookCard created', this.book);
-    }
-  };
-  </script>
+  },
+};
+</script>
   <style scoped lang="scss">
   .grey-text {
     color: #757575;
@@ -89,4 +86,3 @@
     }
   }
 </style>
-  

@@ -1,10 +1,10 @@
 <template>
   <div id="results-state">
-    <SearchBar 
+    <SearchBar
       class="my-5"
       @startSearching="startSearching"
     />
-    <div 
+    <div
       v-if="booksList.exactMatch.length > 0"
       class="exact-match match-container"
     >
@@ -13,21 +13,21 @@
       </h5>
       <div class="book-card-container">
         <BookCard
-          v-for="(book, index) of booksList.exactMatch" 
+          v-for="(book, index) of booksList.exactMatch"
           :book="book"
           :key="`exactMatch-${index}`"
           class="mb-5"
         />
       </div>
     </div>
-    <div 
+    <div
       class="all-matches match-container"
       v-if="booksList.allMatches.length > 0"
     >
       <h5 class="mb-5 book-list-section">{{ $t('states.results.related') }}</h5>
       <div class="book-card-container">
-        <BookCard 
-          v-for="(book, index) of booksList.allMatches" 
+        <BookCard
+          v-for="(book, index) of booksList.allMatches"
           :book="book"
           :key="`allMatches-${index}`"
           class="mb-5"
@@ -44,11 +44,11 @@
 </template>
 
 <script>
-import SearchBar from "../subComponents/SearchBar.vue";
-import BookCard from "../subComponents/BookCard.vue";
+import SearchBar from '../subComponents/SearchBar.vue';
+import BookCard from '../subComponents/BookCard.vue';
 
 export default {
-  name: "ResultsState",
+  name: 'ResultsState',
 
   props: {
     booksList: {
@@ -56,21 +56,21 @@ export default {
       required: false,
       default: () => ({
         exactMatch: [],
-        allMatches: []
-      })
-    }
+        allMatches: [],
+      }),
+    },
   },
 
-  components: { 
+  components: {
     SearchBar,
-    BookCard
+    BookCard,
   },
 
   methods: {
     startSearching(params) {
-      this.$emit("startSearching", params);
-    }
-  }
+      this.$emit('startSearching', params);
+    },
+  },
 };
 </script>
 <style scoped lang="scss">

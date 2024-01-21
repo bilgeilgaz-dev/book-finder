@@ -1,22 +1,23 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import Vue from 'vue';
+import Vuex from 'vuex';
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
     searchKey: '',
   },
   getters: {
-    getSearchKey: state => state.searchKey,
+    getSearchKey: (state) => state.searchKey,
   },
   mutations: {
     setSearchKey(state, searchKey) {
+      // eslint-disable-next-line no-param-reassign
       state.searchKey = searchKey;
-    }
+    },
   },
   actions: {
   },
   modules: {
-  }
-})
+  },
+});

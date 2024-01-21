@@ -44,7 +44,7 @@
 
 <script>
 export default {
-  name: "LoaderCard",
+  name: 'LoaderCard',
 
   data: () => ({}),
 };

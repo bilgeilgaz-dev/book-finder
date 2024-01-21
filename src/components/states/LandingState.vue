@@ -17,20 +17,20 @@ export default {
   name: 'LandingState',
 
   components: {
-    SearchBar
+    SearchBar,
   },
 
   data: () => ({
     searchKey: '',
-    searchType: 'SMART'
+    searchType: 'SMART',
   }),
 
   methods: {
     startSearching(params) {
       this.$emit('startSearching', params);
     },
-  }
-}
+  },
+};
 </script>
 <style scoped lang="scss">
 .landing-page {

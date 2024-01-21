@@ -19,55 +19,46 @@
 
 <script>
 import SideBar from './components/SideBar.vue';
-import search from '@/utils/search';
+import search from './utils/search';
+
 const req = require.context('./components/states', true, /\.(vue)$/i);
 const states = {};
 
-req.keys().map(key => {
+req.keys().map((key) => {
   const name = key.match(/\w+/)[0];
   states[name] = req(key).default;
+  return states;
 });
 
 export default {
   name: 'App',
 
   components: {
-    SideBar
-  },
-
-  watch: {
-    bookSearchState() {
-      console.log('watch bookSearchState', this.bookSearchState);
-    },
-
-    booksList() {
-      console.log('watch booksList', this.booksList);
-    }
+    SideBar,
   },
 
   data: () => ({
     bookSearchState: 'LandingState',
-    booksList: []
+    booksList: [],
   }),
 
   computed: {
     currentState() {
       return states[this.bookSearchState];
-    }
+    },
   },
 
   methods: {
     async startSearching(params) {
-      console.log('startSearching', params);
       this.bookSearchState = 'LoadingState';
       this.booksList = await search.search(params.searchKey, params.searchType);
       this.bookSearchState = 'ResultsState';
-    }
+    },
   },
 
   created() {
     this.$store.commit('setSearchKey', '');
-  }
+  },
 };
 </script>
 <style scoped lang="scss">

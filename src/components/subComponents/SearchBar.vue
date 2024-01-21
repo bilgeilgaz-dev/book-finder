@@ -1,6 +1,6 @@
 <template>
   <div
-    id="search-bar" 
+    id="search-bar"
     :class="[
       'search-bar',
       {'landing-search-bar': isLandingPage},
@@ -14,31 +14,34 @@
           width="100"
         />
       </v-col>
-      <v-col 
+      <v-col
         :md="isLandingPage ? 12 : 8"
         :sm="isLandingPage ? 12 : 10"
       >
         <v-row class="toolbar-container">
-          <v-col 
+          <v-col
             :sm="isLandingPage ? 12 : 9"
           >
-            <v-toolbar 
+            <v-toolbar
               dense
               class="search-bar-toolbar"
             >
               <v-text-field
                 hide-details
-                single-line 
+                single-line
                 :clearable="!isLandingPage"
                 v-model="searchKey"
                 :placeholder="$t('search.placeholder')"
                 class="mr-2"
                 @keydown.enter.prevent="search"
               />
-              <v-btn 
-                icon 
+              <v-btn
+                icon
                 @click="search"
-                :class="[isLandingPage ? 'landing-search-btn' : 'mr-2', {'search-btn-disabled': !searchKey}]"
+                :class="[
+                  isLandingPage ? 'landing-search-btn' : 'mr-2',
+                  {'search-btn-disabled': !searchKey}
+                ]"
                 type="submit"
                 :disabled="!searchKey"
               >
@@ -46,7 +49,7 @@
               </v-btn>
             </v-toolbar>
           </v-col>
-          <v-col 
+          <v-col
             :sm="isLandingPage ? 12 : 3"
             xs="12"
           >
@@ -60,14 +63,14 @@
               >
                 <span>{{ $t('search.searchBy') }}</span>
               </v-col>
-              <v-col 
+              <v-col
                 :md="isLandingPage ? 4 : 12"
                 :sm="isLandingPage ? 6 : 12"
                 xs="12"
               >
-                <v-select 
-                  hide-details 
-                  dense 
+                <v-select
+                  hide-details
+                  dense
                   :items="SEARCH_TYPES"
                   v-model="searchType"
                   :menu-props="{ bottom: true, offsetY: true }"
@@ -85,17 +88,17 @@
         </v-row>
       </v-col>
     </v-row>
-    
+
   </div>
 </template>
-  
+
 <script>
 
 const SEARCH_TYPES = [
   'SMART',
   'TITLE',
   'AUTHOR',
-  'ISBN'
+  'ISBN',
 ];
 
 export default {
@@ -105,44 +108,43 @@ export default {
     state: {
       type: String,
       required: false,
-      default: 'Results'
-    }
+      default: 'Results',
+    },
   },
 
   data: () => ({
     searchKey: '',
-    searchType: 'SMART'
+    searchType: 'SMART',
   }),
 
   computed: {
     isLandingPage() {
       return this.state === 'Landing';
-    }
+    },
   },
 
   methods: {
     search() {
-      if(this.searchType === 'ISBN') {
+      if (this.searchType === 'ISBN') {
         this.searchKey = this.searchKey.replace(/-/g, '');
       }
       this.$store.commit('setSearchKey', this.searchKey);
-      console.log('search', this.searchKey, this.searchType);
-      this.$emit('startSearching', {searchKey: this.searchKey, searchType: this.searchType});
+      this.$emit('startSearching', { searchKey: this.searchKey, searchType: this.searchType });
     },
 
     getSearchTypeText(item) {
-      return (this.isLandingPage && item === 'SMART') ? this.$t(`search.types.LandingSmart`) : this.$t(`search.types.${item}`);
-    }
+      return (this.isLandingPage && item === 'SMART') ? this.$t('search.types.LandingSmart') : this.$t(`search.types.${item}`);
+    },
   },
 
   created() {
     this.SEARCH_TYPES = SEARCH_TYPES;
     const searchKeyFromStore = this.$store.getters.getSearchKey;
-    if(searchKeyFromStore) {
+    if (searchKeyFromStore) {
       this.searchKey = searchKeyFromStore;
     }
   },
-}
+};
 </script>
 <style scoped lang="scss">
 .search-btn-disabled {
@@ -201,7 +203,7 @@ export default {
         padding-left: 0;
       }
     }
-    
+
   }
 }
 
@@ -235,4 +237,3 @@ export default {
   }
 }
 </style>
-  

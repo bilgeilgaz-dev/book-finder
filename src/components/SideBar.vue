@@ -8,7 +8,7 @@
     >
       <v-list>
         <v-list-item class="justify-center">
-          <img 
+          <img
             class="my-2"
             width="50px"
             src="../assets/Penguin_logo.png"
@@ -43,13 +43,13 @@
 </template>
 
 <script>
-  export default {
-    name: 'SideBar',
+export default {
+  name: 'SideBar',
 
-    data: () => ({
-      isSearchSelected: true,
-    }),
-  }
+  data: () => ({
+    isSearchSelected: true,
+  }),
+};
 </script>
 <style scoped lang="scss">
 .side-stepper {
